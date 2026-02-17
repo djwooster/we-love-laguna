@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Sand palette */
+  --color-sand-50: #fdfaf6;
+  --color-sand-100: #f5ede0;
+  --color-sand-200: #e8d5b7;
+  --color-sand-300: #d4b896;
+  --color-sand-400: #c09a75;
+
+  /* Aqua palette */
+  --color-aqua-100: #d4f0ef;
+  --color-aqua-200: #a8dedd;
+  --color-aqua-300: #7ecbca;
+  --color-aqua-400: #5bbcbb;
+  --color-aqua-500: #3ea5a4;
+  --color-aqua-600: #2d8988;
+
+  /* Rose palette */
+  --color-rose-100: #fce8e6;
+  --color-rose-200: #f5c5c0;
+  --color-rose-300: #e8a5a0;
+  --color-rose-400: #d4857f;
+  --color-rose-500: #bc655f;
+
+  /* Deep warm */
+  --color-warm-900: #2d2826;
+  --color-warm-700: #5a4e48;
+  --color-warm-500: #8c7c75;
+  --color-warm-300: #c4b5af;
+  --color-warm-100: #f0e8e4;
+
+  /* Typography */
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Ken Burns hero animation */
+@keyframes ken-burns {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
   }
 }
 
+.animate-ken-burns {
+  animation: ken-burns 14s ease-out forwards;
+}
+
+/* Base */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fdfaf6;
+  color: #2d2826;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Long-form article typography */
+.article-prose p {
+  margin-bottom: 1.6rem;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: #4a3e38;
+}
+
+.article-prose h2 {
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: 600;
+  color: #2d2826;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.25;
+}
+
+.article-prose h3 {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: #2d2826;
+  margin-top: 2.25rem;
+  margin-bottom: 0.875rem;
+}
+
+.article-prose blockquote {
+  border-left: 3px solid #5bbcbb;
+  padding-left: 1.75rem;
+  margin: 2.5rem 0;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #5a4e48;
+  font-family: var(--font-serif);
+}
+
+.article-prose ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.article-prose ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.75rem;
+  color: #4a3e38;
+  line-height: 1.7;
+}
+
+.article-prose ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #5bbcbb;
 }
