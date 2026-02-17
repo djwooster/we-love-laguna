@@ -30,7 +30,7 @@ export function HeroSection() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="text-white/75 text-[11px] tracking-[0.45em] uppercase font-medium mb-5"
         >
-          Your Guide to the Good Life
+          Your Guide to the Good Lifes
         </motion.p>
 
         <motion.h1
