@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CategoryBadge } from "@/components/ui/CategoryBadge";
-import type { Article } from "@/lib/articles";
+import type { Article } from "@/lib/content";
 
 export function FeaturedArticle({ article }: { article: Article }) {
   return (

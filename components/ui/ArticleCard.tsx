@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CategoryBadge } from "./CategoryBadge";
-import type { Article } from "@/lib/articles";
+import type { Article } from "@/lib/content";
 
 interface Props {
   article: Article;

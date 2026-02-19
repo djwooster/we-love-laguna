@@ -2,11 +2,11 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { FeaturedArticle } from "@/components/home/FeaturedArticle";
 import { ArticleGrid } from "@/components/home/ArticleGrid";
 import { NewsletterSection } from "@/components/home/NewsletterSection";
-import { getFeaturedArticle, getRecentArticles } from "@/lib/articles";
+import { getFeaturedArticle, getRecentArticles } from "@/lib/content";
 
-export default function HomePage() {
-  const featured = getFeaturedArticle();
-  const recent = getRecentArticles(featured.slug);
+export default async function HomePage() {
+  const featured = await getFeaturedArticle();
+  const recent = await getRecentArticles(featured.slug);
 
   return (
     <>

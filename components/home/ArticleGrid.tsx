@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArticleCard } from "@/components/ui/ArticleCard";
-import type { Article } from "@/lib/articles";
+import type { Article } from "@/lib/content";
 
 export function ArticleGrid({ articles }: { articles: Article[] }) {
   return (
@@ -59,7 +59,7 @@ export function ArticleGrid({ articles }: { articles: Article[] }) {
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
         {articles.map((article, i) => (
-          <ArticleCard key={article.id} article={article} index={i} />
+          <ArticleCard key={article.slug} article={article} index={i} />
         ))}
       </div>
     </section>
