@@ -1,10 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArticleCard } from "@/components/ui/ArticleCard";
 import type { Article } from "@/lib/content";
 
+const CATEGORIES = ["All", "Dining", "Lifestyle", "Arts & Culture", "Real Estate"] as const;
+type Filter = (typeof CATEGORIES)[number];
+
 export function ArticleGrid({ articles }: { articles: Article[] }) {
+  const [active, setActive] = useState<Filter>("All");
+
+  const filtered =
+    active === "All" ? articles : articles.filter((a) => a.category === active);
+
   return (
     <section
       id="stories"
@@ -40,25 +49,24 @@ export function ArticleGrid({ articles }: { articles: Article[] }) {
         transition={{ duration: 0.6, delay: 0.15 }}
         className="flex flex-wrap gap-2 mb-12"
       >
-        {["All", "Dining", "Lifestyle", "Arts & Culture", "Real Estate"].map(
-          (cat) => (
-            <button
-              key={cat}
-              className={`px-4 py-1.5 text-xs font-medium tracking-wider uppercase rounded-full transition-all duration-200 ${
-                cat === "All"
-                  ? "bg-warm-900 text-white"
-                  : "bg-sand-100 text-warm-500 hover:bg-aqua-100 hover:text-aqua-600"
-              }`}
-            >
-              {cat}
-            </button>
-          )
-        )}
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActive(cat)}
+            className={`px-4 py-1.5 text-xs font-medium tracking-wider uppercase rounded-full transition-all duration-200 ${
+              cat === active
+                ? "bg-warm-900 text-white"
+                : "bg-sand-100 text-warm-500 hover:bg-aqua-100 hover:text-aqua-600"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
       </motion.div>
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-        {articles.map((article, i) => (
+        {filtered.map((article, i) => (
           <ArticleCard key={article.slug} article={article} index={i} />
         ))}
       </div>

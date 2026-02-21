@@ -37,7 +37,8 @@ app/                    Next.js App Router
     layout.tsx          Shared layout
 
 components/
-  layout/               Header, Footer — site-wide chrome
+  layout/               Header, Footer, MotionProvider — site-wide chrome
+  about/                Client components for the About page
   home/                 Sections used only on the homepage
   mdx/                  Custom MDX components (Blockquote, PullQuote, etc.)
   ui/                   Reusable primitives: ArticleCard, CategoryBadge
@@ -162,6 +163,7 @@ Luxurious, coastal, editorial. Think Architectural Digest + local magazine.
 - Standard entrance: `initial={{ opacity: 0, y: 24 }}` → `animate={{ opacity: 1, y: 0 }}`
 - Stagger list items with `delay: index * 0.08`
 - Hover: `scale-105` or color transitions — keep it subtle
+- **`prefers-reduced-motion` is handled globally** via `<MotionProvider>` in `app/layout.tsx` — it wraps the entire app in `<MotionConfig reducedMotion="user">`, so all Framer Motion components automatically respect the user's OS motion setting. No per-component handling needed.
 
 ---
 
@@ -214,3 +216,6 @@ npm run start    # Serve production build
 - **Category slugs must be consistent** — frontmatter `categorySlug` must match the URL slug exactly (see table above)
 - **Only one `featured: true`** article at a time — it appears in the homepage hero spot
 - **Images in `/public`** are served at root: `/public/images/foo.jpg` → `src="/images/foo.jpg"`
+- **`getArticleBySlug` is memoized with `React.cache()`** — `generateMetadata` and the page component both call it, but it only compiles the MDX once per request
+- **Frontmatter is validated at read time** — `parseFrontmatter()` in `lib/content.ts` throws a descriptive error if any required field is missing, so broken articles fail loudly at build time rather than silently at runtime
+- **Slugs are sanitized before file reads** — `sanitizeSlug()` strips non-alphanumeric/hyphen characters to prevent path traversal

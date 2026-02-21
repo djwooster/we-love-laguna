@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArticleCard } from "@/components/ui/ArticleCard";
@@ -62,7 +63,7 @@ export default async function CategoryPage({ params }: Props) {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <nav className="flex gap-6 overflow-x-auto">
             {categories.map((c) => (
-              <a
+              <Link
                 key={c.slug}
                 href={`/category/${c.slug}`}
                 className={`py-4 text-xs tracking-[0.12em] uppercase font-medium whitespace-nowrap border-b-2 transition-colors duration-200 ${
@@ -72,7 +73,7 @@ export default async function CategoryPage({ params }: Props) {
                 }`}
               >
                 {c.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

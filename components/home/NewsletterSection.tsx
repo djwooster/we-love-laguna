@@ -1,6 +1,10 @@
 "use client";
 
+import { useState } from "react";
+
 export function NewsletterSection() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <section className="bg-aqua-400 py-20">
       <div className="max-w-xl mx-auto px-5 text-center">
@@ -16,22 +20,33 @@ export function NewsletterSection() {
           The best of Laguna Beach — dining, arts, wellness, and local
           life — in your inbox every Thursday morning.
         </p>
-        <form
-          className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="flex-1 px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/50 text-sm border border-white/30 focus:outline-none focus:border-white/70 transition-colors"
-          />
-          <button
-            type="submit"
-            className="px-6 py-3 bg-white text-aqua-600 text-xs font-semibold tracking-wider uppercase rounded-lg hover:bg-sand-50 transition-colors duration-200"
+
+        {submitted ? (
+          <p className="font-serif text-xl italic text-white">
+            Thank you — you&rsquo;re on the list.
+          </p>
+        ) : (
+          <form
+            className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSubmitted(true);
+            }}
           >
-            Subscribe
-          </button>
-        </form>
+            <input
+              type="email"
+              required
+              placeholder="Your email address"
+              className="flex-1 px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/50 text-sm border border-white/30 focus:outline-none focus:border-white/70 transition-colors"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-white text-aqua-600 text-xs font-semibold tracking-wider uppercase rounded-lg hover:bg-sand-50 transition-colors duration-200"
+            >
+              Subscribe
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );

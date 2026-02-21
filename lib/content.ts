@@ -2,6 +2,8 @@ import { readFile, readdir } from "fs/promises";
 import { join } from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
+import { cache } from "react";
+import type { ReactElement } from "react";
 import { mdxComponents } from "@/components/mdx";
 
 const articlesDir = join(process.cwd(), "content/articles");
@@ -23,6 +25,55 @@ export interface Article {
   tags?: string[];
 }
 
+export interface CompiledArticle {
+  content: ReactElement;
+  frontmatter: Article;
+}
+
+/** Strip anything that isn't a slug-safe character to prevent path traversal. */
+function sanitizeSlug(slug: string): string {
+  return slug.replace(/[^a-z0-9-]/gi, "");
+}
+
+/** Validate and extract frontmatter fields — avoids unsafe `as Article` cast. */
+function parseFrontmatter(data: Record<string, unknown>, slug: string): Article {
+  const required = [
+    "title",
+    "excerpt",
+    "category",
+    "categorySlug",
+    "author",
+    "date",
+    "imageUrl",
+    "imageAlt",
+  ] as const;
+
+  for (const field of required) {
+    if (!data[field]) {
+      throw new Error(
+        `Article "${slug}" is missing required frontmatter field: "${field}"`
+      );
+    }
+  }
+
+  return {
+    slug,
+    title: String(data.title),
+    subtitle: data.subtitle ? String(data.subtitle) : undefined,
+    excerpt: String(data.excerpt),
+    category: String(data.category),
+    categorySlug: String(data.categorySlug),
+    author: String(data.author),
+    authorTitle: data.authorTitle ? String(data.authorTitle) : undefined,
+    date: String(data.date),
+    readTime: Number(data.readTime),
+    imageUrl: String(data.imageUrl),
+    imageAlt: String(data.imageAlt),
+    featured: data.featured === true,
+    tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
+  };
+}
+
 /** Read frontmatter for all articles (fast — no MDX compilation). */
 export async function getAllArticles(): Promise<Article[]> {
   const files = await readdir(articlesDir);
@@ -30,9 +81,10 @@ export async function getAllArticles(): Promise<Article[]> {
     files
       .filter((f) => f.endsWith(".mdx"))
       .map(async (filename) => {
+        const slug = filename.replace(".mdx", "");
         const source = await readFile(join(articlesDir, filename), "utf-8");
         const { data } = matter(source);
-        return { ...data, slug: filename.replace(".mdx", "") } as Article;
+        return parseFrontmatter(data as Record<string, unknown>, slug);
       })
   );
   return articles.sort(
@@ -48,19 +100,26 @@ export async function getArticlesByCategory(
   return all.filter((a) => a.categorySlug === categorySlug);
 }
 
-/** Compile a single article's MDX and return content + frontmatter. */
-export async function getArticleBySlug(slug: string) {
-  const source = await readFile(
-    join(articlesDir, `${slug}.mdx`),
-    "utf-8"
-  );
-  const { content, frontmatter } = await compileMDX<Article>({
-    source,
-    components: mdxComponents,
-    options: { parseFrontmatter: true },
-  });
-  return { content, frontmatter: { ...frontmatter, slug } };
-}
+/**
+ * Compile a single article's MDX and return content + frontmatter.
+ * Memoized with React.cache() so generateMetadata and the page component
+ * share one compilation per build request rather than running it twice.
+ */
+export const getArticleBySlug = cache(
+  async (slug: string): Promise<CompiledArticle> => {
+    const safe = sanitizeSlug(slug);
+    const source = await readFile(
+      join(articlesDir, `${safe}.mdx`),
+      "utf-8"
+    );
+    const { content, frontmatter } = await compileMDX<Article>({
+      source,
+      components: mdxComponents,
+      options: { parseFrontmatter: true },
+    });
+    return { content, frontmatter: { ...frontmatter, slug: safe } };
+  }
+);
 
 /** Return all slugs — used in generateStaticParams. */
 export async function getAllArticleSlugs(): Promise<string[]> {
