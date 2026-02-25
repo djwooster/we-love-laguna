@@ -43,7 +43,9 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <>
       {/* Category hero */}
-      <div className="bg-sand-50 pt-36 pb-16 lg:pb-20">
+      <div className="relative bg-sand-50 pt-36 pb-16 lg:pb-20">
+        {/* Gradient to give the transparent nav legibility against the light background */}
+        <div className="absolute inset-x-0 top-0 h-36 bg-linear-to-b from-black/25 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <p className="text-[11px] tracking-[0.4em] uppercase text-aqua-500 font-medium mb-4">
             Journal
