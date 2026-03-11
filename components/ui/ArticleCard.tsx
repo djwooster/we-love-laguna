@@ -51,6 +51,12 @@ export function ArticleCard({ article, index = 0 }: Props) {
           <span>{article.author}</span>
           <span className="text-sand-300">·</span>
           <span>{article.readTime} min read</span>
+          {article.volume && (
+            <>
+              <span className="text-sand-300">·</span>
+              <span>Vol. {article.volume}</span>
+            </>
+          )}
         </div>
       </Link>
     </motion.article>

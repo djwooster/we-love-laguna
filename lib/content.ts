@@ -23,6 +23,7 @@ export interface Article {
   imageAlt: string;
   featured?: boolean;
   tags?: string[];
+  volume?: number;
 }
 
 export interface CompiledArticle {
@@ -71,6 +72,7 @@ function parseFrontmatter(data: Record<string, unknown>, slug: string): Article 
     imageAlt: String(data.imageAlt),
     featured: data.featured === true,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
+    volume: data.volume ? Number(data.volume) : undefined,
   };
 }
 

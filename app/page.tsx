@@ -6,7 +6,7 @@ import { getFeaturedArticle, getRecentArticles } from "@/lib/content";
 
 export default async function HomePage() {
   const featured = await getFeaturedArticle();
-  const recent = await getRecentArticles(featured.slug);
+  const recent = await getRecentArticles(featured.slug, 100);
 
   return (
     <>

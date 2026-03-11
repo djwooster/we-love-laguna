@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -33,21 +34,15 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none group">
-            <span
-              className={`font-sans text-[10px] tracking-[0.35em] uppercase font-medium transition-colors duration-300 ${
-                scrolled ? "text-aqua-500" : "text-white/80"
-              }`}
-            >
-              We Love
-            </span>
-            <span
-              className={`font-serif text-lg lg:text-xl font-semibold tracking-wide transition-colors duration-300 ${
-                scrolled ? "text-warm-900" : "text-white"
-              }`}
-            >
-              Laguna Beach
-            </span>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src={scrolled ? "/logo-black-2.png" : "/white-logo-2.png"}
+              alt="We Love Laguna Beach"
+              width={120}
+              height={42}
+              className="h-8 lg:h-10 w-auto transition-all duration-300"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
