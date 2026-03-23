@@ -43,6 +43,7 @@ export function Header() {
               height={42}
               className="h-8 lg:h-10 w-auto transition-all duration-300"
               priority
+              unoptimized
             />
           </Link>
 
