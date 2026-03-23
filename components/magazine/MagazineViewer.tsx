@@ -19,6 +19,9 @@ export function MagazineViewer() {
 
   return (
     <>
+      {/* Nav gradient overlay for legibility on light background */}
+      <div className="fixed top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/30 to-transparent pointer-events-none z-40" />
+
       {/* Hero */}
       <section className="bg-sand-50 pt-28 pb-10 lg:pt-36 lg:pb-14 text-center px-5">
         <motion.p
