@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Lifestyle", href: "/category/lifestyle" },
   { label: "Arts & Culture", href: "/category/arts-culture" },
   { label: "Real Estate", href: "/category/real-estate" },
+  { label: "Magazine", href: "/magazine" },
   { label: "About", href: "/about" },
 ];
 
