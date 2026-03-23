@@ -24,6 +24,7 @@ export interface Article {
   featured?: boolean;
   tags?: string[];
   volume?: number;
+  draft?: boolean;
 }
 
 export interface CompiledArticle {
@@ -73,6 +74,7 @@ function parseFrontmatter(data: Record<string, unknown>, slug: string): Article 
     featured: data.featured === true,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
     volume: data.volume ? Number(data.volume) : undefined,
+    draft: data.draft === true,
   };
 }
 
@@ -89,9 +91,9 @@ export async function getAllArticles(): Promise<Article[]> {
         return parseFrontmatter(data as Record<string, unknown>, slug);
       })
   );
-  return articles.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return articles
+    .filter((a) => !a.draft)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 /** Read frontmatter for articles in a specific category. */
@@ -126,9 +128,17 @@ export const getArticleBySlug = cache(
 /** Return all slugs — used in generateStaticParams. */
 export async function getAllArticleSlugs(): Promise<string[]> {
   const files = await readdir(articlesDir);
-  return files
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(".mdx", ""));
+  const slugs = await Promise.all(
+    files
+      .filter((f) => f.endsWith(".mdx"))
+      .map(async (filename) => {
+        const slug = filename.replace(".mdx", "");
+        const source = await readFile(join(articlesDir, filename), "utf-8");
+        const { data } = matter(source);
+        return data.draft === true ? null : slug;
+      })
+  );
+  return slugs.filter((s): s is string => s !== null);
 }
 
 /** Return the featured article, or the most recent if none is marked. */

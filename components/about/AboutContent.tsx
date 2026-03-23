@@ -27,8 +27,8 @@ export function AboutContent() {
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[480px] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1920&h=900&fit=crop&auto=format&q=85"
-          alt="Laguna Beach ocean view"
+          src="/compressed/Founder.jpg"
+          alt="Jennifer Halbert, founder of We Love Laguna Beach"
           fill
           priority
           className="object-cover"
