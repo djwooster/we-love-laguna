@@ -37,7 +37,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center group">
             <Image
-              src={scrolled ? "/logo-black-2.png" : "/white-logo-2.png"}
+              src={scrolled ? "/svg/logo-black-svg.svg" : "/svg/logo-white-svg.svg"}
               alt="We Love Laguna Beach"
               width={120}
               height={42}
