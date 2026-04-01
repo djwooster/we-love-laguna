@@ -7,7 +7,7 @@ const values = [
   {
     title: "Locally Written",
     description:
-      "Every story is written by someone who lives here, eats here, and loves this place. No travel bloggers, no algorithm-generated lists.",
+      "Every story is written by someone who lives here or has a deep love for this place. No travel bloggers, no algorithm-generated lists.",
   },
   {
     title: "Community First",
