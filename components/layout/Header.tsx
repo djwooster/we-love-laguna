@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Arts & Culture", href: "/category/arts-culture" },
   { label: "Real Estate", href: "/category/real-estate" },
   { label: "Magazine", href: "/magazine" },
+  { label: "Directory", href: "/directory" },
   { label: "About", href: "/about" },
 ];
 
