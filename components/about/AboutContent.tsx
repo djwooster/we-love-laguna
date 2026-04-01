@@ -74,8 +74,8 @@ export function AboutContent() {
             <p>
               We Love Laguna Beach started as a simple idea: what if there was a
               publication about this town that was actually written by people who
-              live here? Not a travel guide, not a tourism board brochure, but a
-              real editorial voice from inside the community.
+              live in or have a love for Laguna Beach? Not a travel guide, not a tourism board brochure, but a
+              real editorial voice from the community.
             </p>
             <p>
               Laguna has always attracted people with a particular kind of
@@ -87,7 +87,7 @@ export function AboutContent() {
               season.
             </p>
             <p>
-              Every writer on our team lives in or very close to Laguna Beach.
+              Every writer on our team holds Laguna dear and has a deep connection to Laguna Beach.
               Every recommendation is genuinely earned. We write about this place
               because we love it — and because we believe that love should be
               articulate.
@@ -172,7 +172,7 @@ export function AboutContent() {
             anyone else who has something real to say about life in Laguna Beach.
           </p>
           <a
-            href="mailto:stories@welovelagunabeach.com"
+            href="mailto:jennifer@welovelagunabeach.com"
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-warm-900 text-white text-xs font-medium tracking-[0.15em] uppercase rounded-full hover:bg-aqua-600 transition-colors duration-300"
           >
             Get in Touch
