@@ -17,7 +17,7 @@ const values = [
   {
     title: "Editorial Honesty",
     description:
-      "We only recommend what we genuinely love. No sponsored content disguised as editorial, no pay-to-play reviews.",
+      "We only recommend what we genuinely love — and our sponsors love this community, too. Paid partnerships are welcomed.",
   },
 ];
 
@@ -31,7 +31,7 @@ export function AboutContent() {
           alt="Jennifer Halbert, founder of We Love Laguna Beach"
           fill
           priority
-          className="object-cover"
+          className="object-cover object-[center_20%]"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-sand-50" />
@@ -55,57 +55,101 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="max-w-3xl mx-auto px-5 sm:px-8 py-20 lg:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-[11px] tracking-[0.4em] uppercase text-aqua-500 font-medium mb-6">
-            Why We Exist
-          </p>
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold text-warm-900 leading-tight mb-8">
-            A love letter to the most beautiful seven miles of coast in
-            California.
-          </h2>
-          <div className="space-y-5 text-warm-500 leading-relaxed text-base">
-            <p>
-              We Love Laguna Beach started as a simple idea: what if there was a
-              publication about this town that was actually written by people who
-              live in or have a love for Laguna Beach? Not a travel guide, not a tourism board brochure, but a
-              real editorial voice from the community.
+      {/* Letter from the Founder */}
+      <section className="bg-white py-20 lg:py-24 border-t border-sand-100">
+        <div className="max-w-3xl mx-auto px-5 sm:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-[11px] tracking-[0.4em] uppercase text-aqua-500 font-medium mb-6">
+              A Letter from Our Founder
             </p>
-            <p>
-              Laguna has always attracted people with a particular kind of
-              sensibility — people who notice things, who care about craft, who
-              believe that where you live shapes who you become. We built this
-              publication for those people. The locals who know which beach to
-              hit on a Tuesday morning, which restaurant just quietly changed its
-              menu, which gallery is showing the most important work of the
-              season.
-            </p>
-            <p>
-              Every writer on our team holds Laguna dear and has a deep connection to Laguna Beach.
-              Every recommendation is genuinely earned. We write about this place
-              because we love it — and because we believe that love should be
-              articulate.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Pull quote */}
-        <motion.blockquote
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="my-14 border-l-2 border-aqua-400 pl-8 font-serif text-2xl md:text-3xl italic text-warm-700 leading-relaxed"
-        >
-          &ldquo;The light here is unlike anywhere else. We want to make sure
-          people actually stop and see it.&rdquo;
-        </motion.blockquote>
+            <h2 className="font-serif text-3xl md:text-4xl font-semibold text-warm-900 leading-tight mb-10">
+              Dear Readers,
+            </h2>
+            <div className="space-y-6 text-warm-500 leading-relaxed text-base">
+              <p>
+                Welcome to We Love Laguna Beach! I am Jennifer Halbert, founder,
+                and my goal in creating this publication is to provide a
+                resource for locals, new residents and visitors alike. The
+                contents of this magazine include samplings of the finest
+                entertainment, artists, restaurants, services and organizations
+                in Laguna Beach.
+              </p>
+              <p>
+                Since our first edition launched, We Love Laguna Beach has
+                morphed organically into much more — especially after teaming up
+                with local social media extraordinaire, Kristin Nicholson,
+                a.k.a. @kristinbytheocean. The magazine&apos;s online presence
+                has grown, and its visibility in the community is even stronger.
+                Kristin is a true leader, friend and talented person who shares
+                my enthusiasm for marketing, volunteerism and helping others.
+                She is a bright light that shines throughout the community.
+              </p>
+              <p>
+                When my family first introduced me to Laguna, I was immediately
+                drawn to its eclectic, friendly people; gorgeous art;
+                breathtaking beaches, and amazing properties. I moved from
+                Florida to Los Angeles years ago to pursue an acting career.
+                While searching for my own property, I developed an interest in
+                real estate and decided to become a Realtor. Now my home is
+                close to my family&apos;s in Laguna Beach and very near to my
+                &ldquo;second home&rdquo; — Berkshire Hathaway HomeServices
+                California Properties. My versatility stems from my vast
+                experience in marketing, graphic design and acting, as well as a
+                degree in communication, in which I focused on advertising and
+                public relations. This — combined with the intense business and
+                negotiating training I receive daily from my parents, brother
+                and Berkshire Hathaway team — led me to become an award-winning
+                real estate agent. I am so grateful for the tremendous love and
+                support with which I have been blessed.
+              </p>
+              <p>
+                Giving back to the community is my way of expressing that
+                appreciation. A portion of each of my closed transactions is
+                donated to local charities. I also enjoy mentoring at my office
+                and sharing my marketing skills with local small businesses to
+                help them achieve their goals. In addition, I participate in
+                many organizations, including The Ability Awareness Project, The
+                Laguna Beach Chamber of Commerce, The Laguna Board of Realtors,
+                Young Professionals Network, PUP Laguna Beach, Chabad of Laguna
+                Beach, and more. I especially enjoy engaging in local events.
+                When I am not helping in the community, you may find me creating
+                abstract art; traveling; spending time with family; eating
+                sushi; escaping to Joshua Tree with my better half; or walking
+                my adorable Pomeranian mix, Bitsy!
+              </p>
+              <p>
+                My joy in building relationships and helping others sparked my
+                interest in this endeavor, and I hope you enjoy reading this
+                issue as much as the team enjoyed putting it together. I would
+                like to extend special thanks to the contributors, advertisers,
+                family members and friends who always support me.
+              </p>
+              <p className="font-serif italic text-warm-600">
+                This issue is dedicated to my dear friend, Erika, who passed
+                away this year — she was a huge supporter of mine throughout my
+                creative journey and will forever be in my heart. Her
+                encouragement and friendship gave me the strength to get that
+                first issue off the ground.
+              </p>
+            </div>
+            <div className="mt-10 pt-8 border-t border-sand-100">
+              <p className="font-serif italic text-warm-700 text-lg">
+                Warm regards,
+              </p>
+              <p className="font-serif text-xl font-semibold text-warm-900 mt-1">
+                Jennifer Halbert
+              </p>
+              <p className="text-sm text-warm-400 mt-1">
+                Founder, We Love Laguna Beach
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Values */}
@@ -169,7 +213,8 @@ export function AboutContent() {
           </h2>
           <p className="text-warm-500 text-base leading-relaxed mb-8">
             We welcome pitches from local writers, business owners, artists, and
-            anyone else who has something real to say about life in Laguna Beach.
+            anyone else who has something real to say about life in Laguna
+            Beach.
           </p>
           <a
             href="mailto:jennifer@welovelagunabeach.com"

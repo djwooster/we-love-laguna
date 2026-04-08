@@ -49,8 +49,6 @@ export function ArticleCard({ article, index = 0 }: Props) {
 
         <div className="mt-4 flex items-center gap-3 text-xs text-warm-300 font-medium tracking-wider uppercase">
           <span>{article.author}</span>
-          <span className="text-sand-300">·</span>
-          <span>{article.readTime} min read</span>
           {article.volume && (
             <>
               <span className="text-sand-300">·</span>

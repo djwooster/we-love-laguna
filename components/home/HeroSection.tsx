@@ -9,7 +9,7 @@ export function HeroSection() {
       {/* Ken Burns image */}
       <div className="absolute inset-0 animate-ken-burns">
         <Image
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&h=1080&fit=crop&auto=format&q=85"
+          src="/laguna-hero.jpg"
           alt="Laguna Beach coastline — turquoise water and white sand"
           fill
           priority
@@ -19,7 +19,7 @@ export function HeroSection() {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-sand-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/15 to-transparent" />
 
       {/* Content */}

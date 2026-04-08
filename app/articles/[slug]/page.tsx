@@ -114,7 +114,7 @@ export default async function ArticlePage({ params }: Props) {
             </p>
             <p className="text-xs text-warm-300 mt-0.5">
               {frontmatter.authorTitle && `${frontmatter.authorTitle} · `}
-              {frontmatter.date} · {frontmatter.readTime} min read
+              {frontmatter.date}
             </p>
           </div>
         </div>

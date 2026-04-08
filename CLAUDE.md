@@ -71,7 +71,6 @@ author: string
 excerpt: string       # 1–2 sentence teaser; used in cards and meta description
 imageUrl: string      # Unsplash URL or /public path (e.g. /images/hero.jpg)
 imageAlt: string
-readTime: number      # minutes, integer
 ---
 ```
 

@@ -18,7 +18,6 @@ export interface Article {
   author: string;
   authorTitle?: string;
   date: string;
-  readTime: number;
   imageUrl: string;
   imageAlt: string;
   featured?: boolean;
@@ -68,7 +67,6 @@ function parseFrontmatter(data: Record<string, unknown>, slug: string): Article 
     author: String(data.author),
     authorTitle: data.authorTitle ? String(data.authorTitle) : undefined,
     date: String(data.date),
-    readTime: Number(data.readTime),
     imageUrl: String(data.imageUrl),
     imageAlt: String(data.imageAlt),
     featured: data.featured === true,

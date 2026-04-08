@@ -9,7 +9,6 @@ export interface Article {
   author: string;
   authorTitle?: string;
   date: string;
-  readTime: number;
   imageUrl: string;
   imageAlt: string;
   featured?: boolean;
@@ -36,7 +35,6 @@ export const articles: Article[] = [
     author: "Serena Whitmore",
     authorTitle: "Food & Travel Writer",
     date: "January 20, 2025",
-    readTime: 6,
     imageUrl:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Elegantly plated seafood dish at a coastal restaurant",
@@ -76,7 +74,6 @@ export const articles: Article[] = [
     author: "Maya Chen",
     authorTitle: "Wellness Editor",
     date: "January 12, 2025",
-    readTime: 5,
     imageUrl:
       "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Spa stones arranged on a smooth surface with water",
@@ -107,7 +104,6 @@ export const articles: Article[] = [
     author: "James Hartley",
     authorTitle: "Arts Contributor",
     date: "January 8, 2025",
-    readTime: 7,
     imageUrl:
       "https://images.unsplash.com/photo-1578926288207-a90a103a3e20?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Art gallery with large paintings on white walls",
@@ -137,7 +133,6 @@ export const articles: Article[] = [
     author: "Diana Foster",
     authorTitle: "Architecture & Design Writer",
     date: "December 28, 2024",
-    readTime: 8,
     imageUrl:
       "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Modern luxury home with ocean views and clean lines",
@@ -167,7 +162,6 @@ export const articles: Article[] = [
     author: "Serena Whitmore",
     authorTitle: "Food & Travel Writer",
     date: "December 15, 2024",
-    readTime: 5,
     imageUrl:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Warm interior of a farm-to-table restaurant with wood accents",
@@ -187,7 +181,6 @@ export const articles: Article[] = [
     author: "James Hartley",
     authorTitle: "Arts Contributor",
     date: "December 5, 2024",
-    readTime: 4,
     imageUrl:
       "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1200&h=800&fit=crop&auto=format&q=80",
     imageAlt: "Outdoor arts festival with colorful paintings displayed",
