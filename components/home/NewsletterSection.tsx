@@ -12,9 +12,7 @@ export function NewsletterSection() {
           Stay in the Loop
         </p>
         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-white leading-tight mb-4">
-          Stories from the shore,
-          <br />
-          <span className="italic font-light">delivered weekly.</span>
+          Stories from the shore.
         </h2>
         <p className="text-white/70 text-sm leading-relaxed mb-8">
           The best of Laguna Beach — dining, arts, wellness, and local
